@@ -8,25 +8,25 @@
   </head>
   <body class="page">
     <header class="header">
-      <a href="" class="logo"></a>
+      <a href="#" class="logo"></a>
     </header>
     <main class="contain">
       <section class="profile">
-        <img src="./images/jankusto.jpeg" alt="Жак-Ив Кусто" class="avatar" />
+        <img src="./images/jankusto.jpeg" alt="Жак-Ив Кусто" class="profile__avatar" />
         <div class="profile__info">
-          <h1 class="profile__name name">Жак-Ив Кусто</h1>
-          <p class="profile__description description">Исследователь океана</p>
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <p class="profile__description">Исследователь океана</p>
           <button
             type="button"
-            class="edit button"
+            class="profile__edit button"
             aria-label="Редактировать"
           ></button>
         </div>
 
-        <button type="button" class="add button" aria-label="Добавить"></button>
+        <button type="button" class="profile__add button" aria-label="Добавить"></button>
       </section>
-      <section>
-        <ul class="elements">
+      <section class="elements">
+        <ul class="elements__list">
           <li class="element">
             <img
               src="./images/karachaevsk.jpeg"
@@ -119,32 +119,41 @@
           </li>
         </ul>
       </section>
-      <aside class="popup">
-        <form method="get" class="popup__container">
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              value="Жак-Ив Кусто"
-              class="popup__input"
-            />
-            <input
-              type="text"
-              name="description"
-              id="description"
-              value="Исследователь океана"
-              class="popup__input"
-            />
-            <input type="submit" value="Сохранить" class="popup__save"/>
-         
-        <button type="button" class="popup__close button" aria-label="Закрыть"></button>
-        </form>
+      <aside class="popup popup_opened">
+        <div class="popup__container">
+            <form method="get" class="popup__form" name="profile">
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <fieldset class="popup__inputs">
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    value="Жак-Ив Кусто"
+                    class="popup__input"
+                  />
+                  <input
+                    type="text"
+                    name="description"
+                    id="description"
+                    value="Исследователь океана"
+                    class="popup__input"
+                  />
+                </fieldset>
+      
+                <input type="submit" value="Сохранить" class="popup__save" />
+              </form>
+                <button
+                  type="button"
+                  class="popup__close button"
+                  aria-label="Закрыть"
+                ></button>
+        </div>
+  
+        
       </aside>
     </main>
     <footer class="footer">
       <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
-  
   </body>
 </html>

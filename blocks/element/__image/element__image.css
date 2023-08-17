@@ -2,7 +2,7 @@
   width: 282px;
   height: 282px;
   object-fit: cover;
-  background: url(<path-to-image>), lightgray 50% / cover no-repeat;
+  background: lightgray 50% / cover no-repeat;
   border-radius: 10px 10px 0px 0px;
   grid-area: image;
 }

@@ -13,10 +13,18 @@
   line-height: 22px;
   cursor: pointer;
   padding: 0;
-  margin-top: 18px;
+  margin: 0;
   transition: background-color 0.7s ease-in-out;
 }
 
 .popup__save:hover {
   background-color: hsla(0, 0%, 0%, 0.8);
+}
+
+@media screen and (max-width: 470px){
+    .popup__save{
+        font-size: 14px;
+        line-height: 17px;
+        height: 46px;
+    }
 }
