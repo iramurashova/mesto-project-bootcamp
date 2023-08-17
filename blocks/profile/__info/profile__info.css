@@ -1,0 +1,37 @@
+.profile__info {
+  display: grid;
+  grid-template-areas:
+    "name edit"
+    "description description";
+  grid-template-rows: repeat(2, min-content);
+  gap: 10px 18px;
+  justify-content: start;
+  align-items: center;
+  max-width: 500px;
+}
+
+@media screen and (max-width: 850px) {
+  .profile__info {
+    max-width: 450px;
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .profile__info {
+    max-width: 350px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .profile__info {
+    max-width: 320px;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .profile__info {
+    width: 282px;
+    justify-content: center;
+    gap: 8px 10px;
+  }
+}
