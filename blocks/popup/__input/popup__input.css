@@ -12,3 +12,12 @@
   font-weight: 400;
   line-height: 17px;
 }
+
+.popup__input::placeholder {
+color: #C4C4C4;
+font-family:"Inter", sans-serif;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 17px;
+}

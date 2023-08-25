@@ -27,7 +27,89 @@
       </section>
       <section class="elements">
         <ul class="elements__list">
-          <li class="element">
+        
+        </ul>
+      </section>
+      <aside class="popup" id="edit_profile">
+        <div class="popup__container">
+            <form method="get" class="popup__form" name="profile">
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <div class="popup__inputs">
+                  <input
+                    type="text"
+                    name="name"
+                    id="profile_name"
+                    class="popup__input"
+                    placeholder="Меня зовут"
+                  />
+                  <input
+                    type="text"
+                    name="about"
+                    id="profile_about"
+                    class="popup__input"
+                    placeholder="Обо мне"
+                  />
+                </div>
+      
+                <input type="submit" value="Сохранить" class="popup__save" />
+              </form>
+                <button
+                  type="button"
+                  class="popup__close button"
+                  aria-label="Закрыть"
+                ></button>
+        </div>
+      </aside>
+      <aside class="popup" id="add_card">
+        <div class="popup__container">
+            <form method="get" class="popup__form" name="card">
+                <h2 class="popup__title">Новое место</h2>
+                <div class="popup__inputs">
+                  <input
+                    type="text"
+                    name="name"
+                    id="card_name"
+                    value=""
+                    class="popup__input"
+                    placeholder="Название"
+                  />
+                  <input
+                    type="url"
+                    name="link"
+                    id="card_link"
+                    class="popup__input"
+                    placeholder="Ссылка на картинку"
+                  />
+                </div>
+      
+                <input type="submit" value="Создать" class="popup__save" />
+              </form>
+                <button
+                  type="button"
+                  class="popup__close button"
+                  aria-label="Закрыть"
+                ></button>
+        </div>
+      </aside>
+      <aside class="popup popup_image" id="open_image">
+        <div class="popup__container">
+           <figure class="popup__image-container">
+            <img src="" alt="" class="popup__image">
+            <figcaption class="popup__caption"></figcaption>
+           </figure>
+                <button
+                  type="button"
+                  class="popup__close button"
+                  aria-label="Закрыть"
+                ></button>
+        </div>
+      </aside>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyright">© 2020 Mesto Russia</p>
+    </footer>
+    <template id="card">
+              <li class="element">
             <img
               src="./images/karachaevsk.jpeg"
               alt="Сентинский храм"
@@ -40,120 +122,14 @@
                 class="element__like button"
                 aria-label="Нравится"
               ></button>
-            </div>
-          </li>
-          <li class="element">
-            <img
-              src="./images/elbrus.jpeg"
-              alt="Эльбрус на закате"
-              class="element__image"
-            />
-            <div class="element__container">
-              <h3 class="element__title">Гора Эльбрус</h3>
               <button
-                type="button"
-                class="element__like button"
-                aria-label="Нравится"
-              ></button>
+              type="button"
+              class="element__delete button"
+              aria-label="Удалить"
+            ></button>
             </div>
           </li>
-          <li class="element">
-            <img
-              src="./images/dombai.jpeg"
-              alt="Осенний пейзаж гор Домбая"
-              class="element__image"
-            />
-            <div class="element__container">
-              <h3 class="element__title">Домбай</h3>
-              <button
-                type="button"
-                class="element__like button"
-                aria-label="Нравится"
-              ></button>
-            </div>
-          </li>
-          <li class="element">
-            <img
-              src="./images/altay.jpeg"
-              alt="Лошади на фоне гор Алтая"
-              class="element__image"
-            />
-            <div class="element__container">
-              <h3 class="element__title">Алтай</h3>
-              <button
-                type="button"
-                class="element__like button"
-                aria-label="Нравится"
-              ></button>
-            </div>
-          </li>
-          <li class="element">
-            <img
-              src="./images/checnya.jpeg"
-              alt="Гора Итум"
-              class="element__image"
-            />
-            <div class="element__container">
-              <h3 class="element__title">Чечня</h3>
-              <button
-                type="button"
-                class="element__like button"
-                aria-label="Нравится"
-              ></button>
-            </div>
-          </li>
-          <li class="element">
-            <img
-              src="./images/kurshskaya_kosa.jpeg"
-              alt="Куршский залив"
-              class="element__image"
-            />
-            <div class="element__container">
-              <h3 class="element__title">Куршская коса</h3>
-              <button
-                type="button"
-                class="element__like button"
-                aria-label="Нравится"
-              ></button>
-            </div>
-          </li>
-        </ul>
-      </section>
-      <aside class="popup popup_opened">
-        <div class="popup__container">
-            <form method="get" class="popup__form" name="profile">
-                <h2 class="popup__title">Редактировать профиль</h2>
-                <fieldset class="popup__inputs">
-                  <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    value="Жак-Ив Кусто"
-                    class="popup__input"
-                  />
-                  <input
-                    type="text"
-                    name="description"
-                    id="description"
-                    value="Исследователь океана"
-                    class="popup__input"
-                  />
-                </fieldset>
-      
-                <input type="submit" value="Сохранить" class="popup__save" />
-              </form>
-                <button
-                  type="button"
-                  class="popup__close button"
-                  aria-label="Закрыть"
-                ></button>
-        </div>
-  
-        
-      </aside>
-    </main>
-    <footer class="footer">
-      <p class="footer__copyright">© 2020 Mesto Russia</p>
-    </footer>
+    </template>
+    <script src="./script.js"></script>
   </body>
 </html>
