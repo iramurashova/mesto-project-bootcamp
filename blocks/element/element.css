@@ -10,4 +10,5 @@
   align-items: center;
   gap: 25px;
   padding-bottom: 26px;
+  position: relative;
 }

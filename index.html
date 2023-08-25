@@ -34,22 +34,22 @@
         <div class="popup__container">
             <form method="get" class="popup__form" name="profile">
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <fieldset class="popup__inputs">
+                <div class="popup__inputs">
                   <input
                     type="text"
                     name="name"
-                    id="name"
-                    value="Жак-Ив Кусто"
+                    id="profile_name"
                     class="popup__input"
+                    placeholder="Меня зовут"
                   />
                   <input
                     type="text"
-                    name="description"
-                    id="description"
-                    value="Исследователь океана"
+                    name="about"
+                    id="profile_about"
                     class="popup__input"
+                    placeholder="Обо мне"
                   />
-                </fieldset>
+                </div>
       
                 <input type="submit" value="Сохранить" class="popup__save" />
               </form>
@@ -64,27 +64,39 @@
         <div class="popup__container">
             <form method="get" class="popup__form" name="card">
                 <h2 class="popup__title">Новое место</h2>
-                <fieldset class="popup__inputs">
+                <div class="popup__inputs">
                   <input
                     type="text"
                     name="name"
-                    id="name"
+                    id="card_name"
                     value=""
                     class="popup__input"
                     placeholder="Название"
                   />
                   <input
-                    type="text"
+                    type="url"
                     name="link"
-                    id="link"
-                    value=""
+                    id="card_link"
                     class="popup__input"
                     placeholder="Ссылка на картинку"
                   />
-                </fieldset>
+                </div>
       
                 <input type="submit" value="Создать" class="popup__save" />
               </form>
+                <button
+                  type="button"
+                  class="popup__close button"
+                  aria-label="Закрыть"
+                ></button>
+        </div>
+      </aside>
+      <aside class="popup popup_image" id="open_image">
+        <div class="popup__container">
+           <figure class="popup__image-container">
+            <img src="" alt="" class="popup__image">
+            <figcaption class="popup__caption"></figcaption>
+           </figure>
                 <button
                   type="button"
                   class="popup__close button"
@@ -110,9 +122,14 @@
                 class="element__like button"
                 aria-label="Нравится"
               ></button>
+              <button
+              type="button"
+              class="element__delete button"
+              aria-label="Удалить"
+            ></button>
             </div>
           </li>
     </template>
-    <script type="module" src="./script.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>
