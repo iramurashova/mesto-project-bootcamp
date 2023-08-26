@@ -5,6 +5,8 @@ const editButton = profile.querySelector(".profile__edit");
 const addButton = profile.querySelector(".profile__add");
 const popupEditProfile = document.getElementById("edit_profile");
 const popupOpenPhoto = document.getElementById("open_image");
+const image = popupOpenPhoto.querySelector(".popup__image");
+const caption = popupOpenPhoto.querySelector(".popup__caption");
 const popupAddCard = document.getElementById("add_card");
 const popupFormEdit = document.forms.profile;
 const popupFormAdd = document.forms.card;
@@ -12,9 +14,7 @@ const nameFormEdit = document.getElementById("profile_name");
 const descriptionFormEdit = document.getElementById("profile_about");
 const nameFormAdd = document.getElementById("card_name");
 const linkFormAdd = document.getElementById("card_link");
-const closeButtonEdit = popupEditProfile.querySelector(".popup__close");
-const closeButtonAdd = popupAddCard.querySelector(".popup__close");
-const closeButtonOpen = popupOpenPhoto.querySelector(".popup__close");
+const closeButtons = document.querySelectorAll('.popup__close');
 const elements = document.querySelector(".elements__list");
 const initialCards = [
   {
@@ -58,9 +58,8 @@ function createElement(el) {
   deleteButton.addEventListener("click", () => newCardTemplate.remove());
   itemImage.addEventListener("click", () => {
     showPopup(popupOpenPhoto);
-    const image = popupOpenPhoto.querySelector(".popup__image");
-    const caption = popupOpenPhoto.querySelector(".popup__caption");
     image.src = itemImage.src;
+    image.alt = itemImage.alt;
     caption.textContent = itemName.textContent;
   });
   return newCardTemplate;
@@ -102,8 +101,7 @@ function handleFormAddSubmit(evt) {
   const newEl = createElement(el);
   console.log(newEl);
   addElement(newEl, "prepend");
-  nameFormAdd.value='';
-  linkFormAdd.value='';
+  evt.target.reset()
   closePopup(popupAddCard);
 
 }
@@ -121,8 +119,9 @@ addButton.addEventListener("click", () => {
   showPopup(popupAddCard);
 });
 
-closeButtonAdd.addEventListener("click", () => closePopup(popupAddCard));
-closeButtonEdit.addEventListener("click", () => closePopup(popupEditProfile));
-closeButtonOpen.addEventListener("click", () => closePopup(popupOpenPhoto));
+closeButtons.forEach((button) => {
+  const popup = button.closest('.popup');
+  button.addEventListener('click', () => closePopup(popup));
+});
 popupFormEdit.addEventListener("submit", handleFormEditSubmit);
 popupFormAdd.addEventListener("submit", handleFormAddSubmit);
