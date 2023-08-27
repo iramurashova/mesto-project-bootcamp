@@ -12,7 +12,11 @@
     </header>
     <main class="contain">
       <section class="profile">
-        <img src="./images/jankusto.jpeg" alt="Жак-Ив Кусто" class="profile__avatar" />
+        <img
+          src="./images/jankusto.jpeg"
+          alt="Жак-Ив Кусто"
+          class="profile__avatar"
+        />
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <p class="profile__description">Исследователь океана</p>
@@ -23,85 +27,90 @@
           ></button>
         </div>
 
-        <button type="button" class="profile__add button" aria-label="Добавить"></button>
+        <button
+          type="button"
+          class="profile__add button"
+          aria-label="Добавить"
+        ></button>
       </section>
       <section class="elements">
-        <ul class="elements__list">
-        
-        </ul>
+        <ul class="elements__list"></ul>
       </section>
       <aside class="popup" id="edit_profile">
         <div class="popup__container">
-            <form method="get" class="popup__form" name="profile">
-                <h2 class="popup__title">Редактировать профиль</h2>
-                <div class="popup__inputs">
-                  <input
-                    type="text"
-                    name="name"
-                    id="profile_name"
-                    class="popup__input"
-                    placeholder="Меня зовут"
-                  />
-                  <input
-                    type="text"
-                    name="about"
-                    id="profile_about"
-                    class="popup__input"
-                    placeholder="Обо мне"
-                  />
-                </div>
-      
-                <input type="submit" value="Сохранить" class="popup__save" />
-              </form>
-                <button
-                  type="button"
-                  class="popup__close button"
-                  aria-label="Закрыть"
-                ></button>
+          <form method="get" class="popup__form" name="profile">
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <div class="popup__inputs">
+              <input
+                type="text"
+                name="name"
+                id="profile_name"
+                class="popup__input"
+                placeholder="Меня зовут"
+              />
+              <input
+                type="text"
+                name="about"
+                id="profile_about"
+                class="popup__input"
+                placeholder="Обо мне"
+              />
+            </div>
+
+            <button type="submit" class="popup__save button" aria-label="Сохранить">
+              Сохранить
+            </button>
+          </form>
+          <button
+            type="button"
+            class="popup__close button"
+            aria-label="Закрыть"
+          ></button>
         </div>
       </aside>
       <aside class="popup" id="add_card">
         <div class="popup__container">
-            <form method="get" class="popup__form" name="card">
-                <h2 class="popup__title">Новое место</h2>
-                <div class="popup__inputs">
-                  <input
-                    type="text"
-                    name="name"
-                    id="card_name"
-                    value=""
-                    class="popup__input"
-                    placeholder="Название"
-                  />
-                  <input
-                    type="url"
-                    name="link"
-                    id="card_link"
-                    class="popup__input"
-                    placeholder="Ссылка на картинку"
-                  />
-                </div>
-      
-                <input type="submit" value="Создать" class="popup__save" />
-              </form>
-                <button
-                  type="button"
-                  class="popup__close button"
-                  aria-label="Закрыть"
-                ></button>
+          <form method="get" class="popup__form" name="card">
+            <h2 class="popup__title">Новое место</h2>
+            <div class="popup__inputs">
+              <input
+                type="text"
+                name="name"
+                id="card_name"
+                value=""
+                class="popup__input"
+                placeholder="Название"
+              />
+              <input
+                type="url"
+                name="link"
+                id="card_link"
+                class="popup__input"
+                placeholder="Ссылка на картинку"
+              />
+            </div>
+            <button type="submit" class="popup__save button" aria-label="Создать">
+              Создать
+            </button>
+          </form>
+          <button
+            type="button"
+            class="popup__close button"
+            aria-label="Закрыть"
+          ></button>
         </div>
       </aside>
       <aside class="popup popup_image" id="open_image">
         <div class="popup__container">
-           <figure class="popup__image-container">
-            <img src="" alt="" class="popup__image">
+          <figure class="popup__image-container">
+            <img src="" alt="" class="popup__image" />
             <figcaption class="popup__caption"></figcaption>
-           </figure>
-                <button
-                  type="button"
-                  class="popup__close button"
-                  aria-label="Закрыть"
-                ></button>
+          </figure>
+          <button
+            type="button"
+            class="popup__close button"
+            aria-label="Закрыть"
+          ></button>
         </div>
       </aside>
     </main>
@@ -109,26 +118,26 @@
       <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
     <template id="card">
-              <li class="element">
-            <img
-              src="./images/karachaevsk.jpeg"
-              alt="Сентинский храм"
-              class="element__image"
-            />
-            <div class="element__container">
-              <h3 class="element__title">Карачаевск</h3>
-              <button
-                type="button"
-                class="element__like button"
-                aria-label="Нравится"
-              ></button>
-              <button
-              type="button"
-              class="element__delete button"
-              aria-label="Удалить"
-            ></button>
-            </div>
-          </li>
+      <li class="element">
+        <img
+          src="./images/karachaevsk.jpeg"
+          alt="Сентинский храм"
+          class="element__image"
+        />
+        <div class="element__container">
+          <h3 class="element__title">Карачаевск</h3>
+          <button
+            type="button"
+            class="element__like button"
+            aria-label="Нравится"
+          ></button>
+          <button
+            type="button"
+            class="element__delete button"
+            aria-label="Удалить"
+          ></button>
+        </div>
+      </li>
     </template>
     <script src="./script.js"></script>
   </body>
