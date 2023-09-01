@@ -7,7 +7,6 @@ import {
 import { showPopup, closePopup } from "./components/modal";
 import  createElement  from "./components/card";
 import { addElement } from "./components/utils";
-console.log(Array.from(document.all).map(i => i.id).filter(i => i != ""));
 const profile = document.querySelector(".profile");
 const profileName = profile.querySelector(".profile__name");
 const profileDescription = profile.querySelector(".profile__description");
