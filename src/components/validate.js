@@ -3,16 +3,19 @@ function showError(input, errorMessage, settings) {
     input.classList.add(settings.inputErrorClass);
     const errorId = `${input.id}-error`;
     const error = document.getElementById(errorId);
-    error.textContent = errorMessage;
-    console.log(input);
+    if (error) {
+      error.textContent = errorMessage;
+    } else {
+      console.error(`Error element with id '${errorId}' not found`);
+    }
   }
+  
   
   function hideError(input, settings) {
     input.classList.remove(settings.inputErrorClass);
     const errorId = `${input.id}-error`;
     const error = document.getElementById(errorId);
     error.textContent = "";
-    console.log(input);
   }
   //функция сброса валидации
   function resetValidation(formElement, settings) {
@@ -68,4 +71,4 @@ function showError(input, errorMessage, settings) {
     });
   }
 
-  export {resetValidation,enableValidation}
+  export {resetValidation,enableValidation, disableButton}

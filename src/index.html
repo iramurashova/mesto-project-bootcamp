@@ -35,7 +35,7 @@
       <section class="elements">
         <ul class="elements__list"></ul>
       </section>
-      <aside class="popup" id="edit_profile">
+      <aside class="popup" id="edit-profile">
         <div class="popup__container">
           <form method="get" class="popup__form" name="profile" novalidate>
             <h2 class="popup__title">Редактировать профиль</h2>
@@ -46,9 +46,9 @@
                 id="name-profile"
                 class="popup__input"
                 placeholder="Меня зовут"
-                required
                 minlength="2"
                 maxlength="40"
+                required
               />
               <span id="name-profile-error" class="popup__error"></span>
               <input
@@ -57,9 +57,9 @@
                 id="about-profile"
                 class="popup__input"
                 placeholder="Обо мне"
-                required
                 minlength="2"
                 maxlength="200"
+                required
               />
               <span id="about-profile-error" class="popup__error"></span>
             </div>
@@ -80,7 +80,7 @@
           ></button>
         </div>
       </aside>
-      <aside class="popup" id="add_card">
+      <aside class="popup" id="add-card">
         <div class="popup__container">
           <form method="get" class="popup__form" name="card" novalidate>
             <h2 class="popup__title">Новое место</h2>
@@ -91,9 +91,9 @@
                 id="name-add"
                 class="popup__input"
                 placeholder="Название"
-                required
                 minlength="2"
                 maxlength="30"
+                required
               />
               <span id="name-add-error" class="popup__error"></span>
               <input
@@ -102,6 +102,7 @@
                 id="link-add"
                 class="popup__input"
                 placeholder="Ссылка на картинку"
+                required
               />
               <span id="link-add-error" class="popup__error"></span>
             </div>
@@ -121,7 +122,7 @@
           ></button>
         </div>
       </aside>
-      <aside class="popup popup_image" id="open_image">
+      <aside class="popup popup_image" id="open-image">
         <div class="popup__container">
           <figure class="popup__image-container">
             <img src="" alt="" class="popup__image" />
