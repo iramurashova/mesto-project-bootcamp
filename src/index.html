@@ -11,11 +11,14 @@
     </header>
     <main class="contain">
       <section class="profile">
-        <img
+        <div class="profile__overlay">
+          <img
           src="<%=require('./images/jankusto.jpeg')%>"
           alt="Фото пользователя"
           class="profile__avatar"
         />
+        </div>
+     
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <p class="profile__description">Исследователь океана</p>
@@ -128,6 +131,36 @@
             <img src="" alt="" class="popup__image" />
             <figcaption class="popup__caption"></figcaption>
           </figure>
+          <button
+            type="button"
+            class="popup__close button"
+            aria-label="Закрыть"
+          ></button>
+        </div>
+      </aside>
+      <aside class="popup" id="edit-profile_photo">
+        <div class="popup__container">
+          <form method="get" class="popup__form" name="profile_photo" novalidate>
+            <h2 class="popup__title">Обновить аватар</h2>
+            <div class="popup__inputs">
+              <input
+                type="url"
+                name="link"
+                id="image-profile"
+                class="popup__input"
+                placeholder="Ссылка на фото"
+                required
+              />
+              <span id="image-profile-error" class="popup__error"></span>
+            <button
+              type="submit"
+              class="popup__save button"
+              name="save"
+              aria-label="Сохранить"
+            >
+              Сохранить
+            </button>
+          </form>
           <button
             type="button"
             class="popup__close button"

@@ -56,7 +56,6 @@ function showError(input, errorMessage, settings) {
   function setEventListeners(formElement, settings) {
     const buttonSubmit = formElement.querySelector(settings.submitButtonSelector);
     const inputList = formElement.querySelectorAll(settings.inputSelector);
-    console.log(buttonSubmit);
     inputList.forEach((input) => {
       input.addEventListener("input", () => {
         checkField(input, settings);

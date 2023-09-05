@@ -10,6 +10,7 @@ import { addElement } from "./components/utils";
 const profile = document.querySelector(".profile");
 const profileName = profile.querySelector(".profile__name");
 const profileDescription = profile.querySelector(".profile__description");
+const profileAvatar = profile.querySelector('.profile__overlay');
 const editButton = profile.querySelector(".profile__edit");
 const addButton = profile.querySelector(".profile__add");
 const popups = Array.from(document.getElementsByClassName("popup"));
@@ -18,13 +19,15 @@ const popupOpenPhoto = document.getElementById("open-image");
 const image = popupOpenPhoto.querySelector(".popup__image");
 const caption = popupOpenPhoto.querySelector(".popup__caption");
 const popupAddCard = document.getElementById("add-card");
+const popupEditProfilePhoto = document.getElementById('edit-profile_photo');
 const popupFormEdit = document.forms.profile;
+const popupFormEditPhoto = document.forms.profile_photo;
 const popupFormAdd = document.forms.card;
 const nameFormEdit = popupFormEdit.elements.name;
 const descriptionFormEdit = popupFormEdit.elements.about;
 const nameFormAdd = popupFormAdd.elements.name;
 const linkFormAdd = popupFormAdd.elements.link;
-const closeButtons = document.querySelectorAll(".popup__close");
+const linkFormEditProfilePhoto = popupFormEditPhoto.elements.link;
 const elements = document.querySelector(".elements__list");
 const cardSettings = {
   imageSelector: ".element__image",
@@ -124,23 +127,28 @@ editButton.addEventListener("click", () => {
 addButton.addEventListener("click", () => {
   showPopup(popupAddCard);
   resetValidation(popupFormAdd,validationSettings);
+  disableButton(popupFormAdd.elements.save);
 });
+
+profileAvatar.addEventListener("click", ()=> {
+  showPopup(popupEditProfilePhoto);
+  resetValidation(popupFormEditPhoto,validationSettings);
+  disableButton(popupFormEditPhoto.elements.save);
+})
 enableValidation(validationSettings);
 
 
-closeButtons.forEach((button) => {
-  const popup = button.closest(".popup");
-  button.addEventListener("click", () => {
-    closePopup(popup);
-  });
-});
+
 popupFormEdit.addEventListener("submit", handleFormEditSubmit);
 popupFormAdd.addEventListener("submit", handleFormAddSubmit);
 
 popups.forEach((popup) => {
   popup.addEventListener("mousedown", (evt) => {
-    if (evt.target === popup) {
-      closePopup(popup);
-    }
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(popup)
+  }
+  if (evt.target.classList.contains('popup__close')) {
+    closePopup(popup)
+  }
   });
 });
