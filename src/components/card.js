@@ -1,5 +1,5 @@
 import { profileName } from "..";
-import { addLike, deleteCard, getProfileInfo, removeLike } from "./api";
+import { addLike, deleteCard, removeLike } from "./api";
 import { showPopup } from "./modal";
 import { isEqual } from "./utils";
 
@@ -12,7 +12,6 @@ function toggleStatusLike(el) {
 export default function createElement(
   el,
   profileId,
-  owner,
   cardTemplate,
   openPhoto,
   settings

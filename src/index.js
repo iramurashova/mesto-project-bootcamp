@@ -15,7 +15,7 @@ import {
   saveNewCard,
 } from "./components/api";
 const profile = document.querySelector(".profile");
- const profileName = profile.querySelector(".profile__name");
+const profileName = profile.querySelector(".profile__name");
 const profileDescription = profile.querySelector(".profile__description");
 const profileAvatar = profile.querySelector(".profile__avatar");
 const editButton = profile.querySelector(".profile__edit");
@@ -52,7 +52,7 @@ const validationSettings = {
   submitButtonSelector: ".popup__save",
   inputErrorClass: "popup__input_type_error",
 };
-let profileId ='';
+let profileId = "";
 getProfileInfo()
   .then((res) => {
     profileName.textContent = res.name;
@@ -63,9 +63,7 @@ getProfileInfo()
   .catch((err) => {
     console.log(err); // выводим ошибку в консоль
   });
-  function setProfileData (profileName, profileDescription, profileAvatar) {
-  return {name: profileName.textContent, about: profileDescription.textContent, avatar: profileAvatar.src}
-  }
+
 //добавление первоначальных элементов
 getInitialCards()
   .then((res) => {
@@ -73,7 +71,6 @@ getInitialCards()
       const newItem = createElement(
         el,
         profileId,
-        setProfileData (profileName, profileDescription, profileAvatar),
         cardTemplate,
         handlePopupOpenPhoto,
         cardSettings
@@ -106,7 +103,7 @@ function handleFormEditSubmit(evt) {
     })
 
     .catch((err) => console.log(err))
-    .finally(()=>popupFormEdit.elements.save.textContent = 'Сохранение...')
+    .finally(() => (popupFormEdit.elements.save.textContent = "Сохранение..."));
 }
 
 //функция обработки сохранения попапа формы добавления
@@ -121,8 +118,6 @@ function handleFormAddSubmit(evt) {
       const newEl = createElement(
         res,
         profileId,
-        setProfileData (profileName, profileDescription, profileAvatar),
-        cardTemplate,
         handlePopupOpenPhoto,
         cardSettings
       );
@@ -131,20 +126,23 @@ function handleFormAddSubmit(evt) {
       closePopup(popupAddCard);
     })
     .catch((err) => console.log(err))
-    .finally(()=>popupFormAdd.elements.save.textContent = 'Сохранение...')
+    .finally(() => (popupFormAdd.elements.save.textContent = "Сохранение..."));
 }
 
 //функция обработки сохранения попапа формы редактирования фото
 function handleFormEditPhotoSubmit(evt) {
   evt.preventDefault();
-  patchProfileAvatar(linkFormEditProfilePhoto.value).then(()=>{
-    profileAvatar.src = linkFormEditProfilePhoto.value;
-  profileAvatar.alt = profileName.textContent;
-  evt.target.reset();
-  closePopup(popupEditProfilePhoto);
-  })
-  .catch((err) => console.log(err.status))
-  .finally(()=>popupFormEditPhoto.elements.save.textContent = 'Сохранение...')
+  patchProfileAvatar(linkFormEditProfilePhoto.value)
+    .then(() => {
+      profileAvatar.src = linkFormEditProfilePhoto.value;
+      profileAvatar.alt = profileName.textContent;
+      evt.target.reset();
+      closePopup(popupEditProfilePhoto);
+    })
+    .catch((err) => console.log(err))
+    .finally(
+      () => (popupFormEditPhoto.elements.save.textContent = "Сохранение...")
+    );
 }
 
 editButton.addEventListener("click", () => {
@@ -173,10 +171,8 @@ popupEditProfilePhoto.addEventListener("submit", handleFormEditPhotoSubmit);
 
 popups.forEach((popup) => {
   popup.addEventListener("mousedown", (evt) => {
-
     if (evt.target.classList.contains("popup_opened")) {
       closePopup(popup);
-      
     }
     if (evt.target.classList.contains("popup__close")) {
       closePopup(popup);
