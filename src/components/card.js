@@ -1,15 +1,14 @@
 import { profileName } from "..";
 import { addLike, deleteCard, removeLike } from "./api";
-import { showPopup } from "./modal";
+import { closePopup, showPopup } from "./modal";
 import { isEqual } from "./utils";
+import { popupDeleteCard} from "../index.js";
+const popupFormDeleteCard = document.forms.delete_card;
+let cardDelete = null;
 
-//функция переключения класса лайка
-function toggleStatusLike(el) {
-  el.classList.toggle("element__like_active");
-}
 // функция cоздания карточки
 
-export default function createElement(
+export function createElement(
   el,
   profileId,
   cardTemplate,
@@ -24,39 +23,36 @@ export default function createElement(
   const deleteButton = newCardTemplate.querySelector(
     settings.deleteButtonSelector
   );
+  if (!(el.owner._id === profileId)) {
+    deleteButton.remove();
+  } else {
+    deleteButton.addEventListener("click", (evt) => {
+      popupFormDeleteCard.elements.save.textContent = popupFormDeleteCard.elements.save.ariaLabel;
+      showPopup(popupDeleteCard);
+      cardDelete = evt.target.closest(".element");
+      cardDelete.id = el._id;
+    });
+  }
 
   if (Boolean(el.likes.find((el) => el._id === profileId))) {
     likeButton.classList.add("element__like_active");
   }
 
   likeButton.addEventListener("click", () => {
-    if (likeButton.classList.contains('element__like_active')) {
+    if (likeButton.classList.contains("element__like_active")) {
       handleDislike(likeButton, likeCount, el);
     } else {
       handleLike(likeButton, likeCount, el);
     }
   });
   likeCount.textContent = el.likes.length || "";
-
-  if (el.owner._id === profileId) {
-    deleteButton.disabled = false;
-    deleteButton.addEventListener("click", () => {
-      deleteCard(el._id)
-        .then(() => {
-          newCardTemplate.remove();
-        })
-        .catch((err) => console.log(err));
-    });
-  } else {
-    deleteButton.disabled = true;
-  }
   itemImage.src = el.link;
   itemImage.alt = el.name;
   itemName.textContent = el.name;
-
   itemImage.addEventListener("click", () => {
     openPhoto(itemImage.src, itemImage.alt);
   });
+  
   return newCardTemplate;
 }
 
@@ -81,4 +77,18 @@ function handleLike(likeButton, likeCount, el) {
     .catch((err) => console.log(err));
 }
 
-export { createElement };
+export function handleDeletePopup(evt) {
+  evt.preventDefault();
+  return deleteCard(cardDelete.id)
+    .then(() => {
+      cardDelete.remove();
+      closePopup(popupDeleteCard);
+      cardDelete = null;
+    })
+    .catch((err) => console.log(err))
+    .finally(
+      () =>
+        (popupDeleteCard.querySelector(".popup__save").textContent =
+          "Удаление...")
+    );
+}
