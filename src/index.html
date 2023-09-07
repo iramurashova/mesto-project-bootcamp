@@ -13,15 +13,15 @@
       <section class="profile">
         <div class="profile__overlay">
           <img
-          src="<%=require('./images/jankusto.jpeg')%>"
+          src=""
           alt="Фото пользователя"
           class="profile__avatar"
         />
         </div>
      
         <div class="profile__info">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <p class="profile__description">Исследователь океана</p>
+          <h1 class="profile__name"></h1>
+          <p class="profile__description"></p>
           <button
             type="button"
             class="profile__edit button"
@@ -152,6 +152,7 @@
                 required
               />
               <span id="image-profile-error" class="popup__error"></span>
+              </div>
             <button
               type="submit"
               class="popup__save button"
@@ -177,11 +178,15 @@
         <img src="" alt="" class="element__image" />
         <div class="element__container">
           <h3 class="element__title"></h3>
-          <button
+          <div class="element__like-container">
+            <button
             type="button"
             class="element__like button"
             aria-label="Нравится"
           ></button>
+          <span class="element__like-count">1</span>
+          </div>
+          
           <button
             type="button"
             class="element__delete button"
