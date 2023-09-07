@@ -20,7 +20,6 @@ function showError(input, errorMessage, settings) {
   //функция сброса валидации
   function resetValidation(formElement, settings) {
     formElement.reset();
-    formElement.elements.save.textContent = formElement.elements.save.ariaLabel;
     const inputList = formElement.querySelectorAll(settings.inputSelector);
     inputList.forEach((input) => {
       hideError(input,settings);

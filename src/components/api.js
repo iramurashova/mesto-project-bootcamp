@@ -63,7 +63,6 @@ const deleteCard = (id) => {
 };
 
 const addLike = (id) => {
-    console.log(`${config.baseUrl}/cards/likes/${id}`);
     return fetch(`${config.baseUrl}/cards/likes/${id}`, {
         method: 'PUT',
         headers: config.headers,

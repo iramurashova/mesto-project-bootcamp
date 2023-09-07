@@ -5,14 +5,14 @@ import {
   disableButton,
 } from "./components/validate";
 import { showPopup, closePopup } from "./components/modal";
-import createElement from "./components/card";
+import { createElement, handleDeletePopup } from "./components/card";
 import { addElement } from "./components/utils";
 import {
   getInitialCards,
   getProfileInfo,
   patchProfileAvatar,
   patchProfileInfo,
-  saveNewCard,
+  saveNewCard
 } from "./components/api";
 const profile = document.querySelector(".profile");
 const profileName = profile.querySelector(".profile__name");
@@ -21,8 +21,10 @@ const profileAvatar = profile.querySelector(".profile__avatar");
 const editButton = profile.querySelector(".profile__edit");
 const addButton = profile.querySelector(".profile__add");
 const popups = Array.from(document.getElementsByClassName("popup"));
+const element = document.querySelector(".element");
 const popupEditProfile = document.getElementById("edit-profile");
 const popupOpenPhoto = document.getElementById("open-image");
+export const popupDeleteCard = document.getElementById("delete-card");
 const image = popupOpenPhoto.querySelector(".popup__image");
 const caption = popupOpenPhoto.querySelector(".popup__caption");
 const popupAddCard = document.getElementById("add-card");
@@ -52,7 +54,7 @@ const validationSettings = {
   submitButtonSelector: ".popup__save",
   inputErrorClass: "popup__input_type_error",
 };
-let profileId = "";
+let profileId;
 getProfileInfo()
   .then((res) => {
     profileName.textContent = res.name;
@@ -99,13 +101,12 @@ function handleFormEditSubmit(evt) {
       profileName.textContent = res.name;
       profileDescription.textContent = res.about;
       closePopup(popupEditProfile);
-      console.log(res);
     })
 
     .catch((err) => console.log(err))
     .finally(() => (popupFormEdit.elements.save.textContent = "Сохранение..."));
 }
-
+console.log(popupFormEdit.elements.save.textContent);
 //функция обработки сохранения попапа формы добавления
 function handleFormAddSubmit(evt) {
   evt.preventDefault();
@@ -118,6 +119,7 @@ function handleFormAddSubmit(evt) {
       const newEl = createElement(
         res,
         profileId,
+        cardTemplate,
         handlePopupOpenPhoto,
         cardSettings
       );
@@ -146,6 +148,7 @@ function handleFormEditPhotoSubmit(evt) {
 }
 
 editButton.addEventListener("click", () => {
+  popupFormEdit.elements.save.textContent = popupFormEdit.elements.save.ariaLabel;
   showPopup(popupEditProfile);
   resetValidation(popupFormEdit, validationSettings);
   nameFormEdit.value = profileName.textContent;
@@ -153,12 +156,16 @@ editButton.addEventListener("click", () => {
 });
 
 addButton.addEventListener("click", () => {
+
+  popupFormAdd.elements.save.textContent = popupFormAdd.elements.save.ariaLabel;
   showPopup(popupAddCard);
   resetValidation(popupFormAdd, validationSettings);
   disableButton(popupFormAdd.elements.save);
 });
 
 profileAvatar.parentNode.addEventListener("click", () => {
+  
+  popupFormEditPhoto.elements.save.textContent = popupFormEditPhoto.elements.save.ariaLabel;
   showPopup(popupEditProfilePhoto);
   resetValidation(popupFormEditPhoto, validationSettings);
   disableButton(popupFormEditPhoto.elements.save);
@@ -168,6 +175,7 @@ enableValidation(validationSettings);
 popupFormEdit.addEventListener("submit", handleFormEditSubmit);
 popupFormAdd.addEventListener("submit", handleFormAddSubmit);
 popupEditProfilePhoto.addEventListener("submit", handleFormEditPhotoSubmit);
+popupDeleteCard.addEventListener("submit", handleDeletePopup);
 
 popups.forEach((popup) => {
   popup.addEventListener("mousedown", (evt) => {
