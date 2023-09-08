@@ -1,20 +1,23 @@
-import { profileName } from "..";
+
 import { addLike, deleteCard, removeLike } from "./api";
 import { closePopup, showPopup } from "./modal";
-import { isEqual } from "./utils";
-import { popupDeleteCard} from "../index.js";
+import { renderLoading } from "./utils";
+import { popupDeleteCard } from "../index.js";
 const popupFormDeleteCard = document.forms.delete_card;
+const buttonSubmit = popupFormDeleteCard.elements.save;
+
+const template = document.getElementById("card");
+const cardTemplate = template.content.querySelector(".element").cloneNode(true);
 let cardDelete = null;
 
 // функция cоздания карточки
 
-export function createElement(
+export const createElement = (
   el,
   profileId,
-  cardTemplate,
   openPhoto,
   settings
-) {
+) => {
   const newCardTemplate = cardTemplate.cloneNode(true);
   const itemImage = newCardTemplate.querySelector(settings.imageSelector);
   const itemName = newCardTemplate.querySelector(settings.titleSelector);
@@ -27,7 +30,6 @@ export function createElement(
     deleteButton.remove();
   } else {
     deleteButton.addEventListener("click", (evt) => {
-      popupFormDeleteCard.elements.save.textContent = popupFormDeleteCard.elements.save.ariaLabel;
       showPopup(popupDeleteCard);
       cardDelete = evt.target.closest(".element");
       cardDelete.id = el._id;
@@ -52,12 +54,11 @@ export function createElement(
   itemImage.addEventListener("click", () => {
     openPhoto(itemImage.src, itemImage.alt);
   });
-  
-  return newCardTemplate;
-}
 
-function handleDislike(likeButton, likeCount, el) {
-  likeButton.classList.add("element__like_active");
+  return newCardTemplate;
+};
+
+const handleDislike = (likeButton, likeCount, el) => {
   removeLike(el._id)
     .then((res) => {
       likeCount.textContent = res.likes.length || "";
@@ -65,9 +66,9 @@ function handleDislike(likeButton, likeCount, el) {
       console.log(`Меня дизлайкнули ${likeButton.classList}`);
     })
     .catch((err) => console.log(err));
-}
+};
 
-function handleLike(likeButton, likeCount, el) {
+const handleLike = (likeButton, likeCount, el) => {
   addLike(el._id)
     .then((res) => {
       likeButton.classList.add("element__like_active");
@@ -75,20 +76,19 @@ function handleLike(likeButton, likeCount, el) {
       likeCount.textContent = res.likes.length;
     })
     .catch((err) => console.log(err));
-}
+};
 
-export function handleDeletePopup(evt) {
+export const handleDeletePopup = (evt) => {
   evt.preventDefault();
+  renderLoading(true, buttonSubmit, "Удаление...");
   return deleteCard(cardDelete.id)
     .then(() => {
       cardDelete.remove();
-      closePopup(popupDeleteCard);
       cardDelete = null;
+      closePopup(evt.target.closest(".popup"));
     })
-    .catch((err) => console.log(err))
-    .finally(
-      () =>
-        (popupDeleteCard.querySelector(".popup__save").textContent =
-          "Удаление...")
-    );
-}
+    .catch(console.error)
+    .finally(() => {
+      renderLoading(false, buttonSubmit);
+    });
+};
