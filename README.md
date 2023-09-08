@@ -28,7 +28,7 @@
 ## **Планы по доработке**
 
 1. Усовершенствовать верстку;
-2. Добавить взаимодействие с сервером.
+2. Усовершенствовать код.
 
 ## **Cсылка на GitHub Pages**
 https://iramurashova.github.io/mesto-project-bootcamp/index.html
