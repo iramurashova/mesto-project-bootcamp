@@ -57,7 +57,6 @@ Promise.all([getProfileInfo(), getInitialCards()])
         handlePopupOpenPhoto,
         cardSettings
       );
-      console.log(el);
       addElement(elements, newItem, "append");
     });
   })

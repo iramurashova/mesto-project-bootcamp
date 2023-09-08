@@ -11,7 +11,6 @@ const cardTemplate = template.content.querySelector(".element").cloneNode(true);
 let cardDelete = null;
 
 // функция cоздания карточки
-
 export const createElement = (
   el,
   profileId,
@@ -63,19 +62,17 @@ const handleDislike = (likeButton, likeCount, el) => {
     .then((res) => {
       likeCount.textContent = res.likes.length || "";
       likeButton.classList.remove("element__like_active");
-      console.log(`Меня дизлайкнули ${likeButton.classList}`);
     })
-    .catch((err) => console.log(err));
+    .catch(console.error);
 };
 
 const handleLike = (likeButton, likeCount, el) => {
   addLike(el._id)
     .then((res) => {
       likeButton.classList.add("element__like_active");
-      console.log(`Меня лайкнули ${likeButton.classList}`);
       likeCount.textContent = res.likes.length;
     })
-    .catch((err) => console.log(err));
+    .catch(console.error);
 };
 
 export const handleDeletePopup = (evt) => {
