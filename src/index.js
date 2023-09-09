@@ -97,7 +97,7 @@ const handleFormAddSubmit = (evt) => {
 };
 
 //функция обработки сохранения попапа формы редактирования фото
-const handleFormEditPhotoSubmit = () => {
+const handleFormEditPhotoSubmit = (evt) => {
   const makeRequest = () => {
     return patchProfileAvatar(linkFormEditProfilePhoto.value).then((res) => {
       profileAvatar.src = res.avatar;

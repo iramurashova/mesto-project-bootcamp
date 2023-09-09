@@ -3,9 +3,6 @@ import { addLike, deleteCard, removeLike } from "./api";
 import { closePopup, showPopup } from "./modal";
 import { renderLoading } from "./utils";
 import { popupDeleteCard } from "../index.js";
-const popupFormDeleteCard = document.forms.delete_card;
-const buttonSubmit = popupFormDeleteCard.elements.save;
-
 const template = document.getElementById("card");
 const cardTemplate = template.content.querySelector(".element").cloneNode(true);
 let cardDelete = null;
@@ -77,7 +74,9 @@ const handleLike = (likeButton, likeCount, el) => {
 
 export const handleDeletePopup = (evt) => {
   evt.preventDefault();
-  renderLoading(true, buttonSubmit, "Удаление...");
+
+const cardDeleteSubmitButton= evt.submitter;
+  renderLoading(true, cardDeleteSubmitButton, "Удаление...");
   return deleteCard(cardDelete.id)
     .then(() => {
       cardDelete.remove();
@@ -86,6 +85,6 @@ export const handleDeletePopup = (evt) => {
     })
     .catch(console.error)
     .finally(() => {
-      renderLoading(false, buttonSubmit);
+      renderLoading(false, cardDeleteSubmitButton);
     });
 };
