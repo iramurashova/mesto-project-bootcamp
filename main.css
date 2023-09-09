@@ -31,7 +31,7 @@
 .popup__form{background:#fff;border-radius:10px;box-shadow:0 0 25px 0 rgba(0,0,0,.15);box-sizing:border-box;display:flex;flex-direction:column;gap:15px;opacity:1;padding:34px 36px 36px;width:430px}@media screen and (max-width:470px){.popup__form{padding:25px 22px;width:282px}}
 .popup__delete{gap:0}
 .popup__close{background-image:url(e7037ad5420e241f7a53.svg);height:32px;position:absolute;right:-40px;top:-40px;width:32px}@media screen and (max-width:580px){.popup__close{height:20px;right:0;top:-36px;width:20px}}
-.popup__title{color:#000;font-family:Inter,sans-serif;font-size:24px;font-style:normal;font-weight:900;line-height:29px;margin:0;padding-bottom:39px}@media screen and (max-width:470px){.popup__title{font-size:18px;line-height:22px;padding-bottom:75px}}
+.popup__title{color:#000;font-family:Inter,sans-serif;font-size:24px;font-style:normal;font-weight:900;line-height:29px;margin:0;padding-bottom:39px}@media screen and (max-width:470px){.popup__title{font-size:18px;line-height:22px;padding-bottom:60px}}
 .popup__inputs{display:flex;flex-direction:column;margin:0;padding:0}
 .popup__input{border:none;border-bottom:1px solid rgba(0,0,0,.2);box-sizing:border-box;color:#000;font-family:Inter,sans-serif;font-size:14px;font-style:normal;font-weight:400;height:27px;line-height:17px;padding:0 0 13px;width:100%}.popup__input::-moz-placeholder{color:#c4c4c4;font-family:Inter,sans-serif;font-size:14px;font-style:normal;font-weight:400;line-height:17px}.popup__input::placeholder{color:#c4c4c4;font-family:Inter,sans-serif;font-size:14px;font-style:normal;font-weight:400;line-height:17px}
 .popup__input_type_error{border-color:red}
