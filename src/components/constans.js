@@ -13,4 +13,6 @@ const cardSettings = {
     inputErrorClass: "popup__input_type_error",
   };
 
-  export {cardSettings, validationSettings}
+  const popupDeleteCard = document.getElementById("delete-card");
+
+  export {cardSettings, validationSettings, popupDeleteCard}

@@ -1,19 +1,13 @@
-
 import { addLike, deleteCard, removeLike } from "./api";
-import { closePopup, showPopup } from "./modal";
-import { renderLoading } from "./utils";
-import { popupDeleteCard } from "../index.js";
+import { showPopup } from "./modal";
+import { handleSubmit } from "./utils";
+import { popupDeleteCard } from "./constans.js";
 const template = document.getElementById("card");
 const cardTemplate = template.content.querySelector(".element").cloneNode(true);
 let cardDelete = null;
 
 // функция cоздания карточки
-export const createElement = (
-  el,
-  profileId,
-  openPhoto,
-  settings
-) => {
+export const createElement = (el, profileId, openPhoto, settings) => {
   const newCardTemplate = cardTemplate.cloneNode(true);
   const itemImage = newCardTemplate.querySelector(settings.imageSelector);
   const itemName = newCardTemplate.querySelector(settings.titleSelector);
@@ -73,18 +67,11 @@ const handleLike = (likeButton, likeCount, el) => {
 };
 
 export const handleDeletePopup = (evt) => {
-  evt.preventDefault();
-
-const cardDeleteSubmitButton= evt.submitter;
-  renderLoading(true, cardDeleteSubmitButton, "Удаление...");
-  return deleteCard(cardDelete.id)
-    .then(() => {
+  const makeRequest = () => {
+    return deleteCard(cardDelete.id).then(() => {
       cardDelete.remove();
       cardDelete = null;
-      closePopup(evt.target.closest(".popup"));
-    })
-    .catch(console.error)
-    .finally(() => {
-      renderLoading(false, cardDeleteSubmitButton);
     });
+  };
+  handleSubmit(makeRequest, evt, "Удаление...", false);
 };

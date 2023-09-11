@@ -1,15 +1,11 @@
 import { closePopup } from "./modal";
 
 //функция добавления элемента
-const addElement = (elements, el, method) => {
+const addElement = (elements, el, method = "prepend") => {
   elements[method](el);
 };
 
-const renderLoading = (
-  isLoading,
-  button,
-  loadingText = "Сохранение..."
-) => {
+const renderLoading = (isLoading, button, loadingText = "Сохранение...") => {
   if (isLoading) {
     button.textContent = loadingText;
   } else {
@@ -17,7 +13,12 @@ const renderLoading = (
   }
 };
 
- const handleSubmit = (request, evt, loadingText = "Сохранение...") => {
+const handleSubmit = (
+  request,
+  evt,
+  loadingText = "Сохранение...",
+  toReset = true
+) => {
   // всегда нужно предотвращать перезагрузку формы при сабмите
   evt.preventDefault();
 
@@ -27,8 +28,8 @@ const renderLoading = (
   renderLoading(true, submitButton, loadingText);
   request()
     .then(() => {
-      evt.target.reset();
-      closePopup(evt.target.closest('.popup'));
+      toReset && evt.target.reset();
+      closePopup(evt.target.closest(".popup"));
     })
     .catch(console.error)
     // в каждом запросе в `finally` нужно возвращать обратно начальный текст кнопки
@@ -37,4 +38,4 @@ const renderLoading = (
     });
 };
 
-export {addElement, renderLoading, handleSubmit}
+export { addElement, renderLoading, handleSubmit };

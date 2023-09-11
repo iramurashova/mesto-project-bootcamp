@@ -18,7 +18,7 @@ import {
   patchProfileInfo,
   saveNewCard,
 } from "./components/api";
-import { cardSettings, validationSettings } from "./components/constans";
+import { cardSettings, validationSettings, popupDeleteCard } from "./components/constans";
 const profile = document.querySelector(".profile");
 const profileName = profile.querySelector(".profile__name");
 const profileDescription = profile.querySelector(".profile__description");
@@ -27,7 +27,6 @@ const editButton = profile.querySelector(".profile__edit");
 const addButton = profile.querySelector(".profile__add");
 const popups = Array.from(document.getElementsByClassName("popup"));
 const popupEditProfile = document.getElementById("edit-profile");
-export const popupDeleteCard = document.getElementById("delete-card");
 const popupAddCard = document.getElementById("add-card");
 const popupEditProfilePhoto = document.getElementById("edit-profile_photo");
 const popupFormEdit = document.forms.profile;
@@ -57,6 +56,7 @@ Promise.all([getProfileInfo(), getInitialCards()])
         handlePopupOpenPhoto,
         cardSettings
       );
+      console.log(el);
       addElement(elements, newItem, "append");
     });
   })
@@ -89,7 +89,7 @@ const handleFormAddSubmit = (evt) => {
         handlePopupOpenPhoto,
         cardSettings
       );
-      addElement(elements, newEl, "prepend");
+      addElement(elements, newEl);
     });
   };
 
@@ -139,8 +139,8 @@ popups.forEach((popup) => {
     if (evt.target.classList.contains("popup_opened")) {
       closePopup(popup);
     }
-    if (evt.target.classList.contains("popup__close")) {
-      closePopup(popup);
-    }
+    const buttonClose = popup.querySelector(".popup__close");
+    buttonClose.addEventListener("click", () =>
+      closePopup(popup))
+    })
   });
-});
