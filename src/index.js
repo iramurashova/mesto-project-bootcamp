@@ -7,7 +7,6 @@ import {
 import {
   showPopup,
   closePopup,
-  handlePopupOpenPhoto,
 } from "./components/modal";
 import { createElement, handleDeletePopup } from "./components/card";
 import { addElement, handleSubmit } from "./components/utils";
@@ -53,7 +52,6 @@ Promise.all([getProfileInfo(), getInitialCards()])
       const newItem = createElement(
         el,
         profileId,
-        handlePopupOpenPhoto,
         cardSettings
       );
       console.log(el);
@@ -86,7 +84,6 @@ const handleFormAddSubmit = (evt) => {
       const newEl = createElement(
         res,
         profileId,
-        handlePopupOpenPhoto,
         cardSettings
       );
       addElement(elements, newEl);

@@ -1,5 +1,5 @@
 import { addLike, deleteCard, removeLike } from "./api";
-import { showPopup } from "./modal";
+import { showPopup, handlePopupOpenPhoto } from "./modal";
 import { handleSubmit } from "./utils";
 import { popupDeleteCard } from "./constans.js";
 const template = document.getElementById("card");
@@ -7,7 +7,7 @@ const cardTemplate = template.content.querySelector(".element").cloneNode(true);
 let cardDelete = null;
 
 // функция cоздания карточки
-export const createElement = (el, profileId, openPhoto, settings) => {
+export const createElement = (el, profileId, settings) => {
   const newCardTemplate = cardTemplate.cloneNode(true);
   const itemImage = newCardTemplate.querySelector(settings.imageSelector);
   const itemName = newCardTemplate.querySelector(settings.titleSelector);
@@ -42,7 +42,7 @@ export const createElement = (el, profileId, openPhoto, settings) => {
   itemImage.alt = el.name;
   itemName.textContent = el.name;
   itemImage.addEventListener("click", () => {
-    openPhoto(itemImage.src, itemImage.alt);
+    handlePopupOpenPhoto(itemImage.src, itemImage.alt);
   });
 
   return newCardTemplate;
